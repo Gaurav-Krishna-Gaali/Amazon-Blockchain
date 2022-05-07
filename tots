@@ -1,0 +1,5 @@
+https://youtu.be/HMdwbq1JJT0?t=2542
+
+-> Amazon provider houses all the variables which can be used globally, we wrap the Component in \_app.js with the amzon provider
+
+-> ConnectButton : Directly authenticates with metamask and pulls info
