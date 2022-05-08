@@ -8,13 +8,13 @@ export const AmazonProvider = ({ children }) => {
   const [nickname, setNickname] = useState("");
 
   const {
+    authenticate,
     isAuthenticated,
-    authenticated,
     enableWeb3,
     Moralis,
     user,
     isWeb3Enabled,
-  } = useMoralis;
+  } = useMoralis();
 
   const handleSetUsername = () => {
     if (user) {
@@ -23,10 +23,10 @@ export const AmazonProvider = ({ children }) => {
         user.save();
         setNickname("");
       } else {
-        console.log("Can't Set Emplty Field");
+        console.log("Can't set empty nickname");
       }
     } else {
-      console.log("No User");
+      console.log("No user");
     }
   };
 
@@ -46,7 +46,7 @@ export const AmazonProvider = ({ children }) => {
         nickname,
         setNickname,
         username,
-        setUsername,
+        handleSetUsername,
       }}
     >
       {children}

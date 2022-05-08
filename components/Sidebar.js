@@ -10,10 +10,6 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineHistory } from "react-icons/ai";
 import { AmazonContext } from "../context/AmazonContext";
 
-const isAuthenticated = true;
-const nickname = "";
-const username = "GAurav";
-
 const Sidebar = () => {
   const styles = {
     container: `h-full w-[300px] flex flex-col bg-[#fff] static`,
@@ -30,6 +26,15 @@ const Sidebar = () => {
     username: `flex items-center w-full justify-center`,
     setNickname: `text-lg font-bold flex flex-1 items-center mt-[20px] mb-[20px] text-white`,
   };
+
+  const {
+    isAuthenticated,
+    nickname,
+    setNickname,
+    username,
+    handleSetUsername,
+  } = useContext(AmazonContext);
+
   return (
     <div className={styles.container}>
       <div className={styles.profile}>
@@ -52,7 +57,7 @@ const Sidebar = () => {
                     placeholder="Username...."
                     className={styles.usernameInput}
                     value={nickname}
-                    onChange={(e) => setNickname(e.target.value)}
+                    // onChange={(e) => setNickname(e.target.value)}
                   />
                 </div>
                 <button
