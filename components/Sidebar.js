@@ -10,6 +10,10 @@ import { BsFillPersonFill } from "react-icons/bs";
 import { AiOutlineHistory } from "react-icons/ai";
 import { AmazonContext } from "../context/AmazonContext";
 
+// const isAuthenticated = true;
+// const username = "Gaurav";
+// const nickname = "";
+
 const Sidebar = () => {
   const styles = {
     container: `h-full w-[300px] flex flex-col bg-[#fff] static`,
@@ -29,6 +33,8 @@ const Sidebar = () => {
 
   const {
     isAuthenticated,
+    buyTokens,
+    getBalance,
     nickname,
     setNickname,
     username,
@@ -43,7 +49,7 @@ const Sidebar = () => {
             <div className={styles.profilePicContainer}>
               <Image
                 src={`https://avatars.dicebear.com/api/pixel-art/${username}.svg`}
-                alt="Profile"
+                alt="profile"
                 className={styles.profilePic}
                 height={100}
                 width={100}
@@ -57,27 +63,24 @@ const Sidebar = () => {
                     placeholder="Username...."
                     className={styles.usernameInput}
                     value={nickname}
-                    // onChange={(e) => setNickname(e.target.value)}
+                    onChange={(e) => setNickname(e.target.value)}
                   />
                 </div>
                 <button
                   className={styles.setNickname}
-                  // onClick={handleSetUsername}
+                  onClick={handleSetUsername}
                 >
                   Set Nickname
                 </button>
               </>
             ) : (
               <div>
-                <div className={styles.welcome}>Wecome, {username}!!!</div>
+                <div className={styles.welcome}>Wecome {username}</div>
               </div>
             )}
           </>
         )}
-
         <div className={styles.connectButton}>
-          {/* Damn this button directly connects to wallet 
-        with a pop up (from web3uikit) */}
           <ConnectButton />
         </div>
       </div>
@@ -88,12 +91,11 @@ const Sidebar = () => {
               src={logo}
               height={30}
               width={30}
-              alt="menuitem"
               className={styles.amazonLogo}
+              alt=""
             />
             My Amazon
-            <br />
-            board
+            <br /> Board
           </div>
         </Link>
         <div className={styles.menuItem}>
@@ -106,7 +108,7 @@ const Sidebar = () => {
         </div>
         <div className={styles.menuItem}>
           <BsFillPersonFill />
-          Saved
+          Profile
         </div>
         <Link href="/history">
           <div className={styles.menuItem}>
@@ -116,7 +118,7 @@ const Sidebar = () => {
         </Link>
       </div>
       <div className={styles.companyName}>
-        <Image src={logoFull} alt="logocompany" height={100} width={100} />
+        <Image src={logoFull} alt="amazon" height={100} width={100} />
       </div>
     </div>
   );
