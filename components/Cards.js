@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { iconTypes } from "web3uikit";
 import { AmazonContext } from "../context/AmazonContext";
 import Card from "./Card";
 
 const Cards = () => {
+  const { assets } = useContext(AmazonContext);
   const item = {
     id: 0,
     attributes: {
@@ -16,13 +18,15 @@ const Cards = () => {
     title: `text-xl font-bolder mb-[20px] mt-[30px]  ml-[30px]`,
     cards: `flex items-center  flex-wrap gap-[80px]`,
   };
+  console.log(assets);
   return (
     <div className={styles.container}>
-      <div className={styles.title}>
-        <div className={styles.cards}>New Release</div>
-        <div className={styles.cards}>
-          <Card key={item.id} item={item.attributes} />
-        </div>
+      <div className={styles.title}>New Release</div>
+      <div className={styles.cards}>
+        {assets.map((item) => {
+          return <Card key={item.id} item={item.attributes} />;
+        })}
+        {/* <Card key={item.id} item={item.attributes} /> */}
       </div>
     </div>
   );
